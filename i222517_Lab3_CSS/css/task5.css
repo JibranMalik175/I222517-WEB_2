@@ -1,0 +1,67 @@
+/* Task 5: CSS Float Layout */
+
+.float-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Left Section - 60% width */
+.left-section {
+    float: left;
+    width: 60%;
+    background-color: #e0f7fa;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Right Section - 40% width */
+.right-section {
+    float: right;
+    width: 38%;
+    background-color: #fff3e0;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Clear float */
+.clear {
+    clear: both;
+}
+
+/* Items in left section */
+.item {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.item img {
+    float: left;
+    margin-right: 15px;
+}
+
+.item p {
+    margin: 0;
+}
+
+/* Right section styling */
+.right-section h3 {
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.right-section p {
+    margin: 0 0 15px 0;
+}
+
+.right-section a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.right-section a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,65 @@
+/* Sticky Navbar using Flexbox and position: sticky */
+.sticky-navbar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    background-color: #333;
+    padding: 15px;
+}
+
+.sticky-navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.sticky-navbar a:hover {
+    color: #4CAF50;
+}
+
+/* Relative Container */
+.relative-box {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* Absolute Child */
+.absolute-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+}
+
+/* Fixed Button */
+.fixed-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+.fixed-btn:hover {
+    background-color: #45a049;
+}
+
+/* Content area */
+.content {
+    margin-top: 20px;
+}
+
+.content p {
+    margin: 20px 0;
+}

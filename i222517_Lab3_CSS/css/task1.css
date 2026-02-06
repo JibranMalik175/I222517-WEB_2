@@ -1,0 +1,54 @@
+/* Card Container */
+.profile-card {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px #ddd;
+    text-align: center;
+}
+
+/* Circular Profile Image */
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #4CAF50;
+}
+
+/* Name */
+.name {
+    color: #333;
+    font-size: 24px;
+    margin: 10px 0 5px 0;
+}
+
+/* Degree */
+.degree {
+    color: #4CAF50;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Role */
+.role {
+    color: #666;
+    font-size: 14px;
+    margin: 5px 0 15px 0;
+}
+
+/* Button with hover effect */
+.profile-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.profile-btn:hover {
+    background-color: #45a049;
+}

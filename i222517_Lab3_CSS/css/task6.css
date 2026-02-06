@@ -1,0 +1,108 @@
+/* Task 6: Integrated Mini WebPage */
+
+/* 1. Grid Layout for page structure */
+.page-grid {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+/* 2. Flexbox for Navigation */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background-color: #333;
+    padding: 15px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    color: #4CAF50;
+}
+
+/* Main Content Area */
+.main-area {
+    padding: 30px;
+    background-color: #f0f0f0;
+}
+
+.main-area h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Flexbox for cards */
+.card-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 200px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.card:hover {
+    border-color: #4CAF50;
+}
+
+/* 3. Positioning for badge */
+.special {
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Fixed button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.back-to-top:hover {
+    background-color: #45a049;
+}
