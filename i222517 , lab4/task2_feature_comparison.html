@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Comparison</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 p-10">
+
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-10 text-gray-800">Choose Your Plan</h1>
+
+        <!-- Grid Container -->
+        <!-- 
+            sm:grid-cols-1 (Small screens: stack panels vertically implied by default or explicit 1 col)
+            md:grid-cols-2 (Medium screens: 2 panels per row)
+            lg:grid-cols-4 (Large screens: 4 panels in a single row)
+            gap-6 (Spacing)
+        -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Panel 1: Free -->
+            <div
+                class="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-600 text-center mb-2">Free</h2>
+                <p class="text-center text-sm text-gray-500 mb-6">Perfect for individuals.</p>
+
+                <ul class="space-y-3 mb-8 flex-grow">
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">Basic Task Management</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">1 GB Storage</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-red-500">✖</span> <span class="text-gray-400">Team Collaboration</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-red-500">✖</span> <span class="text-gray-400">Advanced Analytics</span>
+                    </li>
+                </ul>
+
+                <button
+                    class="w-full bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                    Enable
+                </button>
+            </div>
+
+            <!-- Panel 2: Team -->
+            <div
+                class="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-600 text-center mb-2">Team</h2>
+                <p class="text-center text-sm text-gray-500 mb-6">For small teams.</p>
+
+                <ul class="space-y-3 mb-8 flex-grow">
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">Task Management</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">10 GB Storage</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">Team Collaboration</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-red-500">✖</span> <span class="text-gray-400">Advanced Analytics</span>
+                    </li>
+                </ul>
+
+                <button
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                    Upgrade
+                </button>
+            </div>
+
+            <!-- Panel 3: Business -->
+            <div
+                class="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-600 text-center mb-2">Business</h2>
+                <p class="text-center text-sm text-gray-500 mb-6">For growing businesses.</p>
+
+                <ul class="space-y-3 mb-8 flex-grow">
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">Priority Support</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">100 GB Storage</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">Team Collaboration</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">Basic Analytics</span>
+                    </li>
+                </ul>
+
+                <button
+                    class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                    Start Trial
+                </button>
+            </div>
+
+            <!-- Panel 4: Enterprise -->
+            <div
+                class="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-600 text-center mb-2">Enterprise</h2>
+                <p class="text-center text-sm text-gray-500 mb-6">For large organizations.</p>
+
+                <ul class="space-y-3 mb-8 flex-grow">
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">24/7 Support</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">Unlimited Storage</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">SSO & Security</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-600">✔</span> <span class="text-gray-600">Advanced Analytics</span>
+                    </li>
+                </ul>
+
+                <button
+                    class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                    Contact Sales
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

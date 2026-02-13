@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Workflow Management</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="task4_style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="font-inter text-gray-800 antialiased">
+
+    <!-- Hero Section -->
+    <header class="hero-section relative bg-gradient-to-br from-indigo-900 to-blue-800 text-white overflow-hidden">
+        <div class="absolute inset-0 bg-pattern opacity-10"></div>
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 animate-fade-in-up">
+                        Smart Workflow Management Platform
+                    </h1>
+                    <p class="text-lg md:text-xl text-blue-100 mb-8 animate-fade-in-up delay-100">
+                        Streamline your business processes, enhance collaboration, and boost productivity with our
+                        AI-driven platform.
+                    </p>
+                    <div
+                        class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 animate-fade-in-up delay-200">
+                        <a href="#features"
+                            class="px-8 py-3 bg-white text-blue-900 font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition transform hover:-translate-y-1">Get
+                            Started</a>
+                        <a href="#contact"
+                            class="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-900 transition transform hover:-translate-y-1">Learn
+                            More</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-float">
+                    <!-- Illustration Placeholder (Using SVG) -->
+                    <img src="https://undraw.co/api/illustrations/random?tag=workflow" alt="Workflow Illustration"
+                        class="w-full max-w-lg drop-shadow-2xl">
+                    <!-- Note: undraw API doesn't work directly like this efficiently, using a static undraw-style svg or reliable placeholder -->
+                    <!-- Replacing with a reliable placeholder for the lab -->
+                    <!-- <img src="https://via.placeholder.com/600x400.png?text=Workflow+Illustration" ...> -->
+                    <!-- Better: an SVG directly embedded or a reliable image URL -->
+                </div>
+            </div>
+        </div>
+        <!-- Decorative Shape -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 320" class="w-full h-auto text-gray-50 fill-current">
+                <path fill-opacity="1"
+                    d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                </path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Us?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover the powerful features that make our platform the
+                    best choice for your team.</p>
+            </div>
+
+            <!-- Features Grid: 1 col sm, 2 col md, 3 col lg -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Feature 1 -->
+                <div
+                    class="feature-card bg-white p-8 rounded-xl shadow border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Fast Execution</h3>
+                    <p class="text-gray-600">Experience lightning-fast performance with our optimized engine.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div
+                    class="feature-card bg-white p-8 rounded-xl shadow border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Reliable Security</h3>
+                    <p class="text-gray-600">Enterprise-grade security to keep your data safe and compliant.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div
+                    class="feature-card bg-white p-8 rounded-xl shadow border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Auto Sync</h3>
+                    <p class="text-gray-600">Real-time synchronization across all your devices seamlessly.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div
+                    class="feature-card bg-white p-8 rounded-xl shadow border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-red-600 mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Advanced Analytics</h3>
+                    <p class="text-gray-600">Gain deep insights into your workflow with our analytics dashboard.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div
+                    class="feature-card bg-white p-8 rounded-xl shadow border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 mb-6 group-hover:bg-yellow-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Team Collaboration</h3>
+                    <p class="text-gray-600">Work together with your team in real-time, anywhere.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div
+                    class="feature-card bg-white p-8 rounded-xl shadow border border-gray-100 hover:shadow-xl transition-all duration-300 group">
+                    <div
+                        class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center text-teal-600 mb-6 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Customizable</h3>
+                    <p class="text-gray-600">Tailor the platform to fit your specific needs and preferences.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-blue-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-pattern opacity-5"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-blue-800">
+
+                <div class="p-4">
+                    <div class="text-5xl font-bold mb-2 text-blue-300">10k+</div>
+                    <div class="text-blue-100 font-medium tracking-wide">Active Users</div>
+                </div>
+
+                <div class="p-4">
+                    <div class="text-5xl font-bold mb-2 text-blue-300">99.9%</div>
+                    <div class="text-blue-100 font-medium tracking-wide">Uptime</div>
+                </div>
+
+                <div class="p-4">
+                    <div class="text-5xl font-bold mb-2 text-blue-300">500+</div>
+                    <div class="text-blue-100 font-medium tracking-wide">Integrations</div>
+                </div>
+
+                <div class="p-4">
+                    <div class="text-5xl font-bold mb-2 text-blue-300">24/7</div>
+                    <div class="text-blue-100 font-medium tracking-wide">Support</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">What Our Users Say</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow">
+                    <div class="absolute top-6 right-8 text-6xl text-blue-100 font-serif opacity-50">"</div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                            alt="User" class="w-16 h-16 rounded-full object-cover border-4 border-white shadow">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Sarah Johnson</h4>
+                            <p class="text-sm text-blue-600 font-medium">Product Manager, TechCorp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 relative z-10 italic">
+                        "Smart Workflow has completely revolutionized how our team manages projects. The analytics are a
+                        game changer!"
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-2xl relative shadow-sm hover:shadow-md transition-shadow">
+                    <div class="absolute top-6 right-8 text-6xl text-blue-100 font-serif opacity-50">"</div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+                            alt="User" class="w-16 h-16 rounded-full object-cover border-4 border-white shadow">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Michael Lee</h4>
+                            <p class="text-sm text-blue-600 font-medium">CEO, StartupInc</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 relative z-10 italic">
+                        "I can't imagine running my business without this platform. It's intuitive, fast, and secure.
+                        Highly recommended."
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+                <!-- Brand -->
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-4">SmartWorkflow</h3>
+                    <p class="text-gray-400 text-sm mb-6">Empowering teams to achieve more together.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.75 3.003-2.75 1.233 0 1.838.096 1.838.096v2.22z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.076 17.524c-2.35-.916-3.924-2.834-3.924-5.524 0-3.314 2.686-6 6-6s6 2.686 6 6-1.574 4.608-3.924 5.524c-.172-1.332-1.353-2.524-2.852-2.524-1.353 0-2.479 1.053-2.618 2.355-.386-.299-.682-.67-.682-1.096 0-1.242 1.343-2.25 3-2.25s3 1.008 3 2.25c0 .426-.296.797-.682 1.096.11-1.302-1.016-2.355-2.369-2.355-1.499 0-2.68 1.192-2.852 2.524h-.097z" />
+                            </svg> <!-- Placeholder for Github ish-->
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition">Features</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Integrations</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Changelog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="mr-2">📍</span>
+                            123 Innovation Drive,<br>Tech City, TC 90210
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">📧</span>
+                            support@smartworkflow.com
+                        </li>
+                        <li class="flex items-center">
+                            <span class="mr-2">📞</span>
+                            +1 (555) 123-4567
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
+                &copy; 2026 Smart Workflow Management Platform. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
