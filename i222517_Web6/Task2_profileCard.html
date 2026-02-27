@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .card {
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 auto 10px;
+        }
+
+        .extra-info {
+            display: none;
+            margin-top: 15px;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <img src="C:\Users\Jibran Malik\OneDrive\Documents\Desktop\WhatsApp Image 2026-02-01 at 2.51.08 PM.jpeg"
+            alt="Student Image" class="profile-img">
+        <h3>Jibran Malik</h3>
+        <p>22I-2517</p>
+        <p>Software Engineer</p>
+
+        <div class="extra-info" id="extraInfo">
+            <p><strong>Hobbies:</strong> Coding, Reading, Gaming</p>
+            <p><strong>Skills:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>Email:</strong> 123@gmail.com </p>
+        </div>
+
+        <button id="toggleBtn" onclick="toggleDetails()">Show More</button>
+    </div>
+
+    <script>
+        function toggleDetails() {
+            const info = document.getElementById('extraInfo');
+            const btn = document.getElementById('toggleBtn');
+
+            if (info.style.display === 'none' || info.style.display === '') {
+                info.style.display = 'block';
+                btn.textContent = 'Show Less';
+            } else {
+                info.style.display = 'none';
+                btn.textContent = 'Show More';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

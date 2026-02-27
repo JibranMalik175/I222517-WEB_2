@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input.valid {
+            border-color: green;
+        }
+
+        input.invalid {
+            border-color: red;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="regForm">
+        <h2>Registration Form</h2>
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter name">
+            <div class="error" id="nameError">Name must be at least 3 characters.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter email">
+            <div class="error" id="emailError">Email must contain @ and .</div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter password">
+            <div class="error" id="passwordError">Password ≥ 6 chars + number.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm password">
+            <div class="error" id="confirmError">Passwords do not match.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" placeholder="Enter age">
+            <div class="error" id="ageError">Age must be between 18 and 60.</div>
+        </div>
+
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('regForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirmPassword');
+        const ageInput = document.getElementById('age');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function checkValid() {
+            if (
+                nameInput.classList.contains('valid') &&
+                emailInput.classList.contains('valid') &&
+                passwordInput.classList.contains('valid') &&
+                confirmInput.classList.contains('valid') &&
+                ageInput.classList.contains('valid')
+            ) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+        function setValidation(input, errorElement, isValid) {
+            if (isValid) {
+                input.classList.add('valid');
+                input.classList.remove('invalid');
+                errorElement.style.display = 'none';
+            } else {
+                input.classList.add('invalid');
+                input.classList.remove('valid');
+                errorElement.style.display = 'block';
+            }
+            checkValid();
+        }
+
+        nameInput.addEventListener('input', () => {
+            setValidation(nameInput, document.getElementById('nameError'), nameInput.value.length >= 3);
+        });
+
+        emailInput.addEventListener('input', () => {
+            const val = emailInput.value;
+            setValidation(emailInput, document.getElementById('emailError'), val.includes('@') && val.includes('.'));
+        });
+
+        passwordInput.addEventListener('input', () => {
+            const val = passwordInput.value;
+            const hasNumber = /\d/.test(val);
+            setValidation(passwordInput, document.getElementById('passwordError'), val.length >= 6 && hasNumber);
+
+            // Also re-validate confirm password if it has value
+            if (confirmInput.value.length > 0) {
+                setValidation(confirmInput, document.getElementById('confirmError'), confirmInput.value === val);
+            }
+        });
+
+        confirmInput.addEventListener('input', () => {
+            setValidation(confirmInput, document.getElementById('confirmError'), confirmInput.value === passwordInput.value && confirmInput.value !== '');
+        });
+
+        ageInput.addEventListener('input', () => {
+            const age = parseInt(ageInput.value);
+            setValidation(ageInput, document.getElementById('ageError'), age >= 18 && age <= 60);
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form submitted successfully!');
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e9ecef;
+        }
+
+        .counter-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .display {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .buttons button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-dec {
+            background-color: #dc3545;
+        }
+
+        .btn-res {
+            background-color: #6c757d;
+        }
+
+        .btn-inc {
+            background-color: #28a745;
+        }
+
+        .buttons button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="counter-box">
+        <h2>Counter Application</h2>
+        <div class="display" id="countDisplay">0</div>
+        <div class="buttons">
+            <button class="btn-dec" onclick="decrement()">Decrement</button>
+            <button class="btn-res" onclick="reset()">Reset</button>
+            <button class="btn-inc" onclick="increment()">Increment</button>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        const display = document.getElementById('countDisplay');
+
+        function updateDisplay() {
+            display.textContent = count;
+        }
+
+        function increment() {
+            count++;
+            updateDisplay();
+        }
+
+        function decrement() {
+            count--;
+            updateDisplay();
+        }
+
+        function reset() {
+            count = 0;
+            updateDisplay();
+        }
+    </script>
+
+</body>
+
+</html>

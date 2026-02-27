@@ -1,0 +1,129 @@
+Task 1: Responsive Real Time Form Validation System
+Duration: 35 minutes | Marks: 20
+Create a registration form:
+Fields:
+• Name
+• Email
+• Password
+• Confirm Password
+• Age
+Validation Rules (REAL-TIME)
+Field Condition
+Name Min 3 characters
+Email must contain @ and .
+Password ≥ 6 chars + number
+Confirm must match
+Age 18–60
+
+Show error messages below each field while typing.
+CSS
+• Red border = invalid
+
+• Green border = valid
+• Submit disabled until all valid
+• Responsive Layout
+JavaScript
+• input event (live validation)
+• Do NOT validate only on submit
+Task 2: Interactive Student Profile Card
+Duration: 10 minutes | Marks: 10
+Create a student profile card containing:
+Requirements
+• Name, Registration No, Department, Image
+• Initially shows only basic info
+• A button "Show More" toggles additional info:
+o hobbies
+o skills
+o email
+
+CSS
+• Card centered
+• Shadow + rounded corners
+• Hover effect (scale slightly)
+• Responsive Layout
+JavaScript
+• Toggle details
+• Button text changes:
+Show More → Show Less
+Lab Task 3: Responsive Navigation with Theme Switcher
+Duration: 30 minutes | Marks: 30
+
+Create a responsive navigation bar that transforms into a hamburger menu on mobile devices and
+includes a dark/light mode toggle switch. The page should have a hero section with content to
+demonstrate the theme changes.
+Requirements Breakdown
+1. HTML Structure
+• Navigation Bar: Create a header containing:
+o Logo/Brand name on the left
+o Navigation links (Home, About, Services, Contact) in the center/right
+o Theme toggle button/icon on the far right
+o Hamburger icon (visible only on mobile)
+• Hero Section: Add a heading, paragraph, and a call-to-action button below the navbar to
+demonstrate the theme styling
+2. CSS Styling & Responsiveness
+• Desktop View (>768px):
+o Horizontal navbar with all links visible
+o Theme toggle button styled prominently
+o Smooth hover effects on links and button
+• Mobile View (<768px):
+o Hide the navigation links initially
+o Show the hamburger icon (☰) on the right side (left of theme toggle)
+o When hamburger is clicked, show navigation links in a vertical dropdown/menu
+o Menu should overlay or push down content
+• Theme Styles:
+o Light Theme: Light background (e.g., #f8f9fa), dark text, white navbar
+o Dark Theme: Dark background (e.g., #222), light text, darker navbar
+o Use CSS variables for easy theme switching
+
+3. JavaScript Functionality
+
+• Hamburger Menu: Toggle the visibility of navigation links when hamburger icon is
+clicked on mobile
+• Theme Switcher:
+o Toggle between light and dark themes when the theme button is clicked
+o Change navbar background, text colors, and hero section colors accordingly
+o Update button icon/text (e.g., "" for light mode, " " for dark mode)
+• Responsive Behavior: Ensure hamburger menu hides/reshows properly when resizing
+window
+• Add smooth transitions for theme changes and menu animations
+• Save the user's theme preference in localStorage
+Sample Interaction Flow
+1. On desktop: User sees full navbar with theme toggle
+2. On mobile: User sees logo, hamburger icon, and theme toggle
+3. User clicks hamburger → navigation links slide down
+4. User clicks theme toggle → entire site switches between light and dark mode
+5. Resize window → navigation adapts automatically
+Task 4: Dynamic Todo List Manager
+Duration: 35 minutes | Marks: 25
+Description: Build a todo list application where users can add and remove tasks.
+Requirements:
+o HTML: Create an input field, an "Add Task" button, and an unordered list container for
+displaying tasks.
+o CSS: Style the list items with padding, margins, and a delete button (×) that appears on
+each task. Add hover effects and a clean, modern look.
+o JavaScript: Implement functionality to add new tasks from the input field, display them
+in the list, and remove tasks when the delete button is clicked. Prevent empty task
+submissions.
+
+Task 5: Counter Application
+Duration: 20 minutes | Marks: 15
+Create a counter that can increment, decrement, and reset the count.
+Requirements:
+• A display area to show the current count (initially set to 0).
+• Three buttons:
+✓ Increment: Increases the count by 1.
+✓ Decrement: Decreases the count by 1.
+✓ Reset: Resets the count back to 0.
+
+Submission Guidelines
+• Create all HTML files in a single folder (i.e. Lab6_HTML_CSS_JS)
+• File names should reflect task#_scenario (e.g., Task1_profileCard.html)
+• Ensure code is properly indented and readable
+
+• Push the code to your GitHub Repository: yourRollNumber_WebLabTasks2026 (use the
+same repository created for the previous task).
+• Create a Word report:
+1. Include screenshots for each Task’s Output.
+2. Place screenshots clearly under their respective Task’s Heading.
+3. Paste the GitHub repository link at the top of the document, save the document as
+PDF, and upload it to GCR.
