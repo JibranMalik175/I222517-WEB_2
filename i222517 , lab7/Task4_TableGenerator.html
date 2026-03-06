@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4: Dynamic Table</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid black;
+            display: inline-block;
+            background-color: #eee;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Alternating rows handled by JS, but keeping CSS empty just in case */
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Dynamic Table Generator</h2>
+
+    <div class="controls">
+        <label>Rows: <input type="number" id="rows" min="1"></label>
+        <label>Columns: <input type="number" id="cols" min="1"></label>
+        <button id="gen-btn">Generate Table</button>
+        <div id="error" class="error"></div>
+    </div>
+
+    <table id="mytable"></table>
+
+    <script>
+        const btn = document.getElementById('gen-btn');
+        const rInput = document.getElementById('rows');
+        const cInput = document.getElementById('cols');
+        const table = document.getElementById('mytable');
+        const errorDiv = document.getElementById('error');
+
+        btn.onclick = () => {
+            errorDiv.textContent = '';
+            table.innerHTML = '';
+            const r = parseInt(rInput.value);
+            const c = parseInt(cInput.value);
+
+            if (isNaN(r) || isNaN(c) || r <= 0 || c <= 0) {
+                errorDiv.textContent = "Please enter positive numbers.";
+                return;
+            }
+
+            for (let i = 1; i <= r; i++) {
+                const tr = document.createElement('tr');
+
+                // Style alternating rows
+                if (i % 2 === 0) {
+                    tr.style.backgroundColor = '#ddd';
+                }
+
+                for (let j = 1; j <= c; j++) {
+                    const td = document.createElement('td');
+                    td.textContent = `(${i}, ${j})`;
+
+                    // Hover effects using JS
+                    td.onmouseenter = () => { td.style.backgroundColor = 'yellow'; };
+                    td.onmouseleave = () => { td.style.backgroundColor = ''; };
+
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+        };
+    </script>
+</body>
+
+</html>

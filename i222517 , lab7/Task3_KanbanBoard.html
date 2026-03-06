@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3: Kanban Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+        #board {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .column {
+            width: 300px;
+            border: 2px solid black;
+            min-height: 400px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .column h2 {
+            border-bottom: 1px solid black;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        .dropzone {
+            min-height: 350px;
+        }
+
+        .task {
+            border: 1px solid #333;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: grab;
+            background-color: white;
+        }
+
+        .task.low {
+            border-left: 5px solid green;
+        }
+
+        .task.medium {
+            border-left: 5px solid orange;
+        }
+
+        .task.high {
+            border-left: 5px solid red;
+        }
+
+        .delete-btn {
+            float: right;
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+            border: none;
+            background: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mini Kanban Board</h1>
+
+    <div class="input-box">
+        <input type="text" id="task-input" placeholder="Enter task...">
+        <select id="priority-select">
+            <option value="low">Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
+        </select>
+        <button id="add-btn">Add Task</button>
+    </div>
+
+    <div id="board">
+        <div class="column" data-column="todo" id="col-todo">
+            <h2>To-Do</h2>
+            <div class="dropzone" id="zone-todo"></div>
+        </div>
+        <div class="column" data-column="in-progress" id="col-progress">
+            <h2>In Progress</h2>
+            <div class="dropzone" id="zone-progress"></div>
+        </div>
+        <div class="column" data-column="done" id="col-done">
+            <h2>Done</h2>
+            <div class="dropzone" id="zone-done"></div>
+        </div>
+    </div>
+
+    <script>
+        const input = document.getElementById('task-input');
+        const prioritySelect = document.getElementById('priority-select');
+        const btn = document.getElementById('add-btn');
+
+        const todoZone = document.getElementById('zone-todo');
+        const progressZone = document.getElementById('zone-progress');
+        const doneZone = document.getElementById('zone-done');
+        const dropzones = document.querySelectorAll('.dropzone');
+
+        let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
+
+        function saveParams() {
+            localStorage.setItem('myTasks', JSON.stringify(tasks));
+        }
+
+        btn.onclick = () => {
+            const val = input.value.trim();
+            if (val === '') return;
+
+            const t = { id: Date.now().toString(), text: val, priority: prioritySelect.value, status: 'todo' };
+            tasks.push(t);
+            saveParams();
+            renderTasks();
+            input.value = '';
+        };
+
+        function renderTasks() {
+            todoZone.innerHTML = ''; progressZone.innerHTML = ''; doneZone.innerHTML = '';
+            tasks.forEach(task => {
+                const el = document.createElement('div');
+                el.className = 'task ' + task.priority;
+                el.draggable = true;
+                el.dataset.id = task.id;
+
+                const txt = document.createElement('span');
+                txt.textContent = task.text;
+
+                const del = document.createElement('button');
+                del.textContent = 'X';
+                del.className = 'delete-btn';
+                del.onclick = () => {
+                    tasks = tasks.filter(t => t.id !== task.id);
+                    saveParams();
+                    renderTasks();
+                };
+
+                el.appendChild(txt);
+                el.appendChild(del);
+
+                el.ondragstart = (e) => e.dataTransfer.setData('task_id', task.id);
+
+                if (task.status === 'todo') todoZone.appendChild(el);
+                else if (task.status === 'in-progress') progressZone.appendChild(el);
+                else doneZone.appendChild(el);
+            });
+        }
+
+        dropzones.forEach(zone => {
+            zone.ondragover = (e) => e.preventDefault();
+            zone.ondrop = (e) => {
+                e.preventDefault();
+                const id = e.dataTransfer.getData('task_id');
+                const task = tasks.find(t => t.id === id);
+                if (task) {
+                    task.status = zone.parentElement.dataset.column;
+                    saveParams();
+                    renderTasks();
+                }
+            };
+        });
+
+        renderTasks();
+    </script>
+</body>
+
+</html>

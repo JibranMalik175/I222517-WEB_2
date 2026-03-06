@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5: Nested Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            border: 2px solid black;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ccc;
+        }
+
+        .critical {
+            background-color: #ffcccc;
+            color: darkred;
+        }
+
+        .nested-row {
+            display: none;
+            background-color: #f9f9f9;
+        }
+
+        .open {
+            display: table-row;
+        }
+
+        table.inner-table {
+            width: 90%;
+            margin: 10px auto;
+            border: 1px solid gray;
+        }
+
+        button.toggle-btn {
+            cursor: pointer;
+            padding: 2px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Student Records</h2>
+
+    <div class="controls">
+        <input type="text" id="search" placeholder="Search name or course...">
+        <button id="sort-asc">Sort Name A-Z</button>
+        <button id="sort-desc">Sort Name Z-A</button>
+    </div>
+
+    <table id="main-table">
+        <thead>
+            <tr>
+                <th>+</th>
+                <th>Student ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody id="tb"></tbody>
+    </table>
+
+    <script>
+        const students = [
+            { id: '101', name: 'Alina', courses: [{ name: 'Math', score: 85 }, { name: 'Physics', score: 40 }] },
+            { id: '102', name: 'Zainab', courses: [{ name: 'CS', score: 90 }, { name: 'History', score: 60 }] },
+            { id: '103', name: 'Basit', courses: [{ name: 'English', score: 45 }] },
+            { id: '104', name: 'Danish', courses: [{ name: 'Math', score: 95 }] }
+        ];
+
+        const tbody = document.getElementById('tb');
+        let currentSort = 'none';
+
+        function render(data) {
+            tbody.innerHTML = '';
+
+            data.forEach(s => {
+                const tr = document.createElement('tr');
+
+                // check if score < 50
+                const hasFail = s.courses.some(c => c.score < 50);
+                if (hasFail) tr.className = 'critical';
+
+                const tdToggle = document.createElement('td');
+                const btn = document.createElement('button');
+                btn.className = 'toggle-btn';
+                btn.textContent = '+';
+                tdToggle.appendChild(btn);
+
+                const tdId = document.createElement('td');
+                tdId.textContent = s.id;
+
+                const tdName = document.createElement('td');
+                tdName.textContent = s.name;
+
+                tr.appendChild(tdToggle);
+                tr.appendChild(tdId);
+                tr.appendChild(tdName);
+                tbody.appendChild(tr);
+
+                // nested row
+                const trNested = document.createElement('tr');
+                trNested.className = 'nested-row';
+                const tdNested = document.createElement('td');
+                tdNested.colSpan = 3;
+
+                const innertb = document.createElement('table');
+                innertb.className = 'inner-table';
+                innertb.innerHTML = '<tr><th>Course</th><th>Score</th></tr>';
+                s.courses.forEach(c => {
+                    const row2 = document.createElement('tr');
+                    row2.innerHTML = `<td>${c.name}</td><td>${c.score}</td>`;
+                    innertb.appendChild(row2);
+                });
+                tdNested.appendChild(innertb);
+                trNested.appendChild(tdNested);
+                tbody.appendChild(trNested);
+
+                btn.onclick = () => {
+                    trNested.classList.toggle('open');
+                    btn.textContent = btn.textContent === '+' ? '-' : '+';
+                };
+            });
+        }
+
+        const input = document.getElementById('search');
+        function filterData() {
+            let q = input.value.toLowerCase();
+            let filtered = students.filter(s => {
+                const namematch = s.name.toLowerCase().includes(q);
+                const coursematch = s.courses.some(c => c.name.toLowerCase().includes(q));
+                return namematch || coursematch;
+            });
+
+            if (currentSort === 'asc') filtered.sort((a, b) => a.name.localeCompare(b.name));
+            if (currentSort === 'desc') filtered.sort((a, b) => b.name.localeCompare(a.name));
+
+            render(filtered);
+        }
+
+        input.oninput = filterData;
+        document.getElementById('sort-asc').onclick = () => { currentSort = 'asc'; filterData(); };
+        document.getElementById('sort-desc').onclick = () => { currentSort = 'desc'; filterData(); };
+
+        render(students);
+    </script>
+</body>
+
+</html>

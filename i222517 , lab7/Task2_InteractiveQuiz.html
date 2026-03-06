@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2: Interactive Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white p-4 font-sans text-gray-900">
+    <div class="border-2 border-black max-w-lg mx-auto p-4">
+        <h1 class="text-2xl font-bold border-b-2 border-black pb-2 mb-4">Quiz</h1>
+
+        <!-- Progress Bar -->
+        <div id="progress-container" class="w-full bg-gray-300 h-6 mb-4 border border-black relative">
+            <div id="progress-bar" class="bg-blue-500 h-full w-0 inline-block align-top"></div>
+        </div>
+
+        <div id="quiz-container">
+            <h2 id="question-text" class="text-xl font-bold mb-4">Question Here</h2>
+
+            <div id="options-container" class="space-y-2 mb-4"></div>
+
+            <button id="next-btn" class="bg-gray-300 border-2 border-black px-4 py-1 hidden">Next</button>
+            <button id="submit-btn" class="bg-gray-300 border-2 border-black px-4 py-1 hidden">Submit</button>
+        </div>
+
+        <div id="scoreboard-container" class="hidden">
+            <h2 class="text-xl font-bold mb-2 border-b border-black">Scoreboard</h2>
+            <p id="final-score" class="font-bold mb-4"></p>
+
+            <table class="w-full border-collapse border border-black mb-4">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-black p-2">S.No</th>
+                        <th class="border border-black p-2">Question</th>
+                        <th class="border border-black p-2">Your Answer</th>
+                        <th class="border border-black p-2">Correct Answer</th>
+                        <th class="border border-black p-2">Marks</th>
+                    </tr>
+                </thead>
+                <tbody id="scoreboard-body">
+                </tbody>
+            </table>
+
+            <button onclick="location.reload()" class="bg-gray-300 border-2 border-black px-4 py-1">Restart</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { question: "What does HTML stand for?", options: ["Hyper Text Preprocessor", "Hyper Text Markup Language", "Hyper Tool Multi Language", "Hyperlink Text Markup Language"], correct: "Hyper Text Markup Language" },
+            { question: "Which language runs in a web browser?", options: ["Java", "C", "Python", "JavaScript"], correct: "JavaScript" },
+            { question: "What does CSS stand for?", options: ["Central Style Sheets", "Cascading Style Sheets", "Cascading Simple Sheets", "Cars SUVs Sailboats"], correct: "Cascading Style Sheets" },
+            { question: "Which symbol is used for comments in JavaScript?", options: ["//", "<!--", "/*", "#"], correct: "//" },
+            { question: "Which method is used to access an HTML element by id?", options: ["getElementById()", "getElement(id)", "getElementByID()", "getId()"], correct: "getElementById()" }
+        ];
+
+        let currentQIndex = 0;
+        const userAnswers = [];
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const quizContainer = document.getElementById('quiz-container');
+        const scoreboardContainer = document.getElementById('scoreboard-container');
+        const scoreboardBody = document.getElementById('scoreboard-body');
+        const finalScoreText = document.getElementById('final-score');
+        const progressContainer = document.getElementById('progress-container');
+
+        function loadQuestion() {
+            const currentQ = questions[currentQIndex];
+            questionText.textContent = `Q${currentQIndex + 1}: ${currentQ.question}`;
+            optionsContainer.innerHTML = '';
+
+            currentQ.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'block w-full text-left p-2 border border-black bg-white hover:bg-gray-100 cursor-pointer';
+                btn.textContent = opt;
+                btn.onclick = () => selectOption(btn, opt);
+                optionsContainer.appendChild(btn);
+            });
+
+            nextBtn.classList.add('hidden');
+            if (currentQIndex === questions.length - 1) {
+                submitBtn.classList.add('hidden');
+            }
+
+            updateProgress();
+        }
+
+        let selectedOptionText = null;
+
+        function selectOption(btn, text) {
+            Array.from(optionsContainer.children).forEach(child => {
+                child.classList.remove('bg-blue-200');
+            });
+            btn.classList.add('bg-blue-200');
+            selectedOptionText = text;
+
+            if (currentQIndex < questions.length - 1) {
+                nextBtn.classList.remove('hidden');
+            } else {
+                submitBtn.classList.remove('hidden');
+            }
+        }
+
+        nextBtn.onclick = () => {
+            if (selectedOptionText !== null) {
+                userAnswers.push(selectedOptionText);
+                selectedOptionText = null;
+                currentQIndex++;
+                loadQuestion();
+            }
+        };
+
+        submitBtn.onclick = () => {
+            if (selectedOptionText !== null) {
+                userAnswers.push(selectedOptionText);
+                showScoreboard();
+                progressBar.style.width = '100%';
+            }
+        };
+
+        function updateProgress() {
+            const percentage = ((currentQIndex) / questions.length) * 100;
+            progressBar.style.width = percentage + '%';
+        }
+
+        function showScoreboard() {
+            quizContainer.classList.add('hidden');
+            progressContainer.classList.add('hidden');
+            scoreboardContainer.classList.remove('hidden');
+
+            let score = 0;
+            scoreboardBody.innerHTML = '';
+
+            questions.forEach((q, index) => {
+                const tr = document.createElement('tr');
+                const isCorrect = userAnswers[index] === q.correct;
+                if (isCorrect) score++;
+
+                tr.className = isCorrect ? 'bg-green-100' : 'bg-red-100';
+
+                tr.innerHTML = `
+                    <td class="border border-black p-2 text-center">${index + 1}</td>
+                    <td class="border border-black p-2 text-sm">${q.question}</td>
+                    <td class="border border-black p-2 text-sm font-bold">${userAnswers[index] || '-'}</td>
+                    <td class="border border-black p-2 text-sm italic">${q.correct}</td>
+                    <td class="border border-black p-2 text-center font-bold">${isCorrect ? 1 : 0}</td>
+                `;
+                scoreboardBody.appendChild(tr);
+            });
+
+            finalScoreText.textContent = `Score: ${score} / ${questions.length}`;
+        }
+
+        loadQuestion();
+    </script>
+</body>
+
+</html>
